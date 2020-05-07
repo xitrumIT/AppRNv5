@@ -17,6 +17,7 @@ import {
 
 import {CustomHeader} from '../Drawer/CustomHeader';
 import ImagePicker from 'react-native-image-picker';
+import {connect} from 'react-redux';
 import firebase from '@react-native-firebase/app';
 import '@react-native-firebase/auth';
 import '@react-native-firebase/storage';
@@ -54,12 +55,64 @@ export class SettingsScreen extends Component {
       username: '',
       email: '',
       imgSource: '',
+      uid: null,
+      displayName: '',
+      phoneNumber: '',
+      birthDate: '',
+      photoURL: '',
       image_uri: 'https://avatars0.githubusercontent.com/u/12028011?v=3&s=200',
     };
     this.getImage = this.getImage.bind(this);
   }
   componentDidMount() {}
-
+  getUserData() {
+    const user = auth.currentUser;
+    if (user != null) {
+      this.setState(
+        {
+          uid: user.uid,
+        },
+        () => {
+          console.log(this.state.uid);
+          let dbLocation = '/users/' + this.state.uid + '/';
+          db.ref(dbLocation).on('value', (snapshot) => {
+            if (snapshot.val() === null) {
+              console.log('NOTHING GRABBED IN DATA');
+              return null;
+            } else {
+              const data = snapshot.val();
+              this.setState(
+                {
+                  displayName: data.displayName,
+                  username: data.username,
+                  phoneNumber: data.phoneNumber,
+                  birthDate: data.birthDate,
+                  email: data.email,
+                  photoURL: data.photoURL,
+                },
+                () => {
+                  if (this.state.photoURL === '') {
+                    this.getProfilePhoto();
+                  }
+                },
+              );
+              console.log('USER INFO LOADED INTO PROFILE');
+            }
+          });
+        },
+      );
+    }
+  }
+  getProfilePhoto() {
+    storage
+      .ref('profilePics')
+      .child(`${this.state.username}.jpg`)
+      .getDownloadURL()
+      .then((url) => {
+        console.log(url);
+        this.setState({photoURL: url});
+      });
+  }
   signOutUser = async () => {
     firebase
       .auth()
@@ -135,8 +188,8 @@ export class SettingsScreen extends Component {
       }
     });
   }
-  
-  render() {   
+
+  render() {
     this.state = {
       displayName: firebase.auth().currentUser.displayName,
       uid: firebase.auth().currentUser.uid,
@@ -144,7 +197,7 @@ export class SettingsScreen extends Component {
       phoneNumber: firebase.auth().currentUser.phoneNumber,
       photoURL: firebase.auth().currentUser.photoURL,
     };
-    
+
     console.log(firebase.auth().currentUser.photoURL);
     // let img =
     //   this.state.avatarSource == this.state.avatarSource ? (

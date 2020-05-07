@@ -15,14 +15,15 @@ import AnimatedTabBar, {
   TabsConfig,
   BubbleTabConfig,
 } from '@gorhom/animated-tabbar';
+import LoginScreen from '../screen/Auth/LoginScreen';
 import {
   RegisterScreen,
-  LoginScreen,
   WelcomeScreen,
   ForgotPasswordScreen,
 } from '../screen/Auth';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+// Intro Slider
 const tabs: TabsConfig<BubbleTabConfig> = {
   Home: {
     labelStyle: {

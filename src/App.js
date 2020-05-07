@@ -32,7 +32,7 @@ const persistConfig = {
 // let reducer = persistCombineReducers(config, allReducers)
 const persistedReducer = persistReducer(persistConfig, allReducers);
 
-export let store = createStore(
+export const store = createStore(
   persistedReducer,
   compose(applyMiddleware(ReduxThunk)),
 );

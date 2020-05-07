@@ -13,19 +13,16 @@ import {
 } from 'react-native';
 
 import {LoginManager, AccessToken} from 'react-native-fbsdk';
-import {
-  GoogleSignin,
-  GoogleSigninButton,
-  statusCodes,
-} from '@react-native-community/google-signin';
+import {GoogleSignin, statusCodes} from '@react-native-community/google-signin';
 import AnimatedLoader from 'react-native-animated-loader';
-
+import {connect} from 'react-redux';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import firebase from '@react-native-firebase/app';
 import '@react-native-firebase/auth';
+import '@react-native-firebase/database';
 
-export class LoginScreen extends Component {
+class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -134,7 +131,7 @@ export class LoginScreen extends Component {
       this.setState({
         isLoading: true,
       }),
-        30000;
+        3000;
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
@@ -422,3 +419,20 @@ const styles = StyleSheet.create({
     height: width * 0.9,
   },
 });
+// lấy state từ store redux
+function mapStateToProps(state) {
+  return {
+    // state: state từ store,
+    // authReducer: reducer được import trong index combineReducers
+    // auth: lấy từ state trong authReducer
+  };
+}
+
+// gửi action lên reducer
+function mapDispatchToProps(dispatch) {
+  return {
+    // setToken là action
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

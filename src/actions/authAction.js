@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import firebase from '../config/fireBase';
+
 export const setAuth = () => {
   console.log('go action set auth');
   return {
@@ -13,23 +14,10 @@ export const removeAuth = () => {
   };
 };
 
-// export const getToken = token => {
-//   return {
-//     type: GET_TOKEN,
-//     token,
-//   };
-// };
-
 // export const setUser = user => {
 //   return {
 //     type: SET_USER,
 //     user,
-//   };
-// };
-
-// export const logout = () => {
-//   return {
-//     type: LOGOUT,
 //   };
 // };
 
@@ -47,28 +35,9 @@ export const removeAuth = () => {
 //   };
 // };
 
-export const signin = (email, password, callback) => async (dispatch) => {
-  try {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        dispatch({type: SIGNIN_SUCCESS});
-        callback();
-      })
-      .catch(() => {
-        dispatch({
-          type: SIGNIN_ERROR,
-          payload: 'Invalid login credentials',
-        });
-      });
-  } catch (err) {
-    dispatch({type: SIGNIN_ERROR, payload: 'Invalid login credentials'});
-  }
-};
-
 export const signup = (email, password) => async (dispatch) => {
   try {
+    dispatch(beginApiCall());
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -79,15 +48,15 @@ export const signup = (email, password) => async (dispatch) => {
       })
       .then((dataAfterEmail) => {
         firebase.auth().onAuthStateChanged(function (user) {
-          if (user.emailVerified) {
-            // Email is verified
+          if (user) {
+            // Sign up successful
             dispatch({
               type: SIGNUP_SUCCESS,
               payload:
                 'Your account was successfully created! Now you need to verify your e-mail address, please go check your inbox.',
             });
           } else {
-            // Email is not verified
+            // Signup failed
             dispatch({
               type: SIGNUP_ERROR,
               payload:
@@ -96,7 +65,8 @@ export const signup = (email, password) => async (dispatch) => {
           }
         });
       })
-      .catch(function (error) {
+      .catch(() => {
+        dispatch(apiCallError());
         dispatch({
           type: SIGNUP_ERROR,
           payload:
@@ -104,10 +74,98 @@ export const signup = (email, password) => async (dispatch) => {
         });
       });
   } catch (err) {
+    dispatch(apiCallError());
     dispatch({
       type: SIGNUP_ERROR,
       payload:
         "Something went wrong, we couldn't create your account. Please try again.",
     });
+  }
+};
+
+// Signing in with Firebase
+export const signin = (email, password, callback) => async (dispatch) => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((data) => {
+        if (data.user.emailVerified) {
+          console.log('IF', data.user.emailVerified);
+          dispatch({type: SIGNIN_SUCCESS});
+          callback();
+        } else {
+          console.log('ELSE', data.user.emailVerified);
+          dispatch({
+            type: EMAIL_NOT_VERIFIED,
+            payload: "You haven't verified your e-mail address.",
+          });
+        }
+      })
+      .catch(() => {
+        dispatch(apiCallError());
+        dispatch({
+          type: SIGNIN_ERROR,
+          payload: 'Invalid login credentials',
+        });
+      });
+  } catch (err) {
+    dispatch(apiCallError());
+    dispatch({type: SIGNIN_ERROR, payload: 'Invalid login credentials'});
+  }
+};
+
+// Signing out with Firebase
+export const signout = () => async (dispatch) => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        dispatch({type: SIGNOUT_SUCCESS});
+      })
+      .catch(() => {
+        dispatch(apiCallError());
+        dispatch({
+          type: SIGNOUT_ERROR,
+          payload: 'Error, we were not able to log you out. Please try again.',
+        });
+      });
+  } catch (err) {
+    dispatch(apiCallError());
+    dispatch({
+      type: SIGNOUT_ERROR,
+      payload: 'Error, we were not able to log you out. Please try again.',
+    });
+  }
+};
+
+// Reset password with Firebase
+export const resetPassword = (email) => async (dispatch) => {
+  try {
+    dispatch(beginApiCall());
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() =>
+        dispatch({
+          type: RESET_SUCCESS,
+          payload:
+            "Check your inbox. We've sent you a secured reset link by e-mail.",
+        }),
+      )
+      .catch(() => {
+        dispatch(apiCallError());
+        dispatch({
+          type: RESET_ERROR,
+          payload:
+            "Oops, something went wrong we couldn't send you the e-mail. Try again and if the error persists, contact admin.",
+        });
+      });
+  } catch (err) {
+    dispatch(apiCallError());
+    dispatch({type: RESET_ERROR, payload: err});
   }
 };

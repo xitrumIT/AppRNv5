@@ -1,8 +1,6 @@
 import firebase from '@react-native-firebase/storage';
 import '@react-native-firebase/auth';
-
-// import 'firebase/auth';
-// import 'firebase/database';
+import '@react-native-firebase/database';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAUeJYixybjHlvcgLwuFR6hNsGrU3KedpM',
@@ -15,7 +13,10 @@ const firebaseConfig = {
   measurementId: 'G-MXEB27X8ZW',
 };
 
-// export const Firebase = firebase.initializeApp(firebaseConfig);
+// let app = firebase.initializeApp(firebaseConfig);
+// export const db = app.database();
+// export const auth = firebase.auth();
+// export const storage = firebase.storage();
 
 export default !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig).firestore()
