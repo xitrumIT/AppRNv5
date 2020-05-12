@@ -255,7 +255,7 @@ const StackApp = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <StackApp.Navigator initialRouteName="HomeApp">
+      <StackApp.Navigator initialRouteName="Welcome">
         <StackApp.Screen
           name="Welcome"
           component={WelcomeScreen}

@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 23,
     color: '#4fc182',
-    fontFamily: 'Octicons.ttf',
+    fontFamily: 'Comfortaa-Light.ttf',
   },
   basket: {
     flex: 1,

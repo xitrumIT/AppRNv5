@@ -37,6 +37,17 @@
 		A316823C3B16418AB906B000 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FF1F5916B2E44D19816B47E9 /* Zocial.ttf */; };
 		D343D2EE8E954829B435A9C6 /* SVN-Newton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C88F0BE9FADA4DB788B22F24 /* SVN-Newton.ttf */; };
 		39F0DFDA33E7435D8FACECC3 /* SVN-Redressed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACBB531783EA43D887FE07A2 /* SVN-Redressed.ttf */; };
+		61B11D7F43C04F07AF8603DE /* Baloo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CAAD067D8944CBCBA915899 /* Baloo2-Bold.ttf */; };
+		8F698F5905B64B0A93E3D943 /* Baloo2-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C7013130282433E8C73F36E /* Baloo2-ExtraBold.ttf */; };
+		C0A72F4AC1254844B64426D2 /* Baloo2-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F15109A3E48541BDB36F2846 /* Baloo2-Medium.ttf */; };
+		F8CAA6A23AA34EEB85D56BEC /* Baloo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 07F7D415ED5C4FAFA703CC4D /* Baloo2-Regular.ttf */; };
+		5356EE3409E54857A03AD4CF /* Baloo2-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8A67AAC0C8046E582B75CE0 /* Baloo2-SemiBold.ttf */; };
+		AB494EB018AC4239A3BBD29E /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 819F9B9F6D6E4BF3BC787509 /* Comfortaa-Bold.ttf */; };
+		F958265357BB4EB69946EC13 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4BB917917A4244E5BAEB76D0 /* Comfortaa-Light.ttf */; };
+		D4181BEEFA054D1D902FD101 /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75CBAFEC683F4804BDF4CD84 /* Comfortaa-Medium.ttf */; };
+		E623D9221B2F4193BD46194B /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 797F2D3E054C4DDF834DBAD4 /* Comfortaa-Regular.ttf */; };
+		949BB7919D3B4472A5F528CB /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 81FFC1E5922C41A9ACD1B391 /* Comfortaa-SemiBold.ttf */; };
+		929FD55B210E43BC81309E9D /* Courgette-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB682BAFD951456892CCCCD3 /* Courgette-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +104,17 @@
 		FF1F5916B2E44D19816B47E9 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		C88F0BE9FADA4DB788B22F24 /* SVN-Newton.ttf */ = {isa = PBXFileReference; name = "SVN-Newton.ttf"; path = "../src/assets/fonts/SVN-Newton.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		ACBB531783EA43D887FE07A2 /* SVN-Redressed.ttf */ = {isa = PBXFileReference; name = "SVN-Redressed.ttf"; path = "../src/assets/fonts/SVN-Redressed.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6CAAD067D8944CBCBA915899 /* Baloo2-Bold.ttf */ = {isa = PBXFileReference; name = "Baloo2-Bold.ttf"; path = "../src/assets/fonts/Baloo2-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4C7013130282433E8C73F36E /* Baloo2-ExtraBold.ttf */ = {isa = PBXFileReference; name = "Baloo2-ExtraBold.ttf"; path = "../src/assets/fonts/Baloo2-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F15109A3E48541BDB36F2846 /* Baloo2-Medium.ttf */ = {isa = PBXFileReference; name = "Baloo2-Medium.ttf"; path = "../src/assets/fonts/Baloo2-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		07F7D415ED5C4FAFA703CC4D /* Baloo2-Regular.ttf */ = {isa = PBXFileReference; name = "Baloo2-Regular.ttf"; path = "../src/assets/fonts/Baloo2-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F8A67AAC0C8046E582B75CE0 /* Baloo2-SemiBold.ttf */ = {isa = PBXFileReference; name = "Baloo2-SemiBold.ttf"; path = "../src/assets/fonts/Baloo2-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		819F9B9F6D6E4BF3BC787509 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; name = "Comfortaa-Bold.ttf"; path = "../src/assets/fonts/Comfortaa-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4BB917917A4244E5BAEB76D0 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; name = "Comfortaa-Light.ttf"; path = "../src/assets/fonts/Comfortaa-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		75CBAFEC683F4804BDF4CD84 /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; name = "Comfortaa-Medium.ttf"; path = "../src/assets/fonts/Comfortaa-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		797F2D3E054C4DDF834DBAD4 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; name = "Comfortaa-Regular.ttf"; path = "../src/assets/fonts/Comfortaa-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		81FFC1E5922C41A9ACD1B391 /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; name = "Comfortaa-SemiBold.ttf"; path = "../src/assets/fonts/Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DB682BAFD951456892CCCCD3 /* Courgette-Regular.ttf */ = {isa = PBXFileReference; name = "Courgette-Regular.ttf"; path = "../src/assets/fonts/Courgette-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +246,17 @@
 				FF1F5916B2E44D19816B47E9 /* Zocial.ttf */,
 				C88F0BE9FADA4DB788B22F24 /* SVN-Newton.ttf */,
 				ACBB531783EA43D887FE07A2 /* SVN-Redressed.ttf */,
+				6CAAD067D8944CBCBA915899 /* Baloo2-Bold.ttf */,
+				4C7013130282433E8C73F36E /* Baloo2-ExtraBold.ttf */,
+				F15109A3E48541BDB36F2846 /* Baloo2-Medium.ttf */,
+				07F7D415ED5C4FAFA703CC4D /* Baloo2-Regular.ttf */,
+				F8A67AAC0C8046E582B75CE0 /* Baloo2-SemiBold.ttf */,
+				819F9B9F6D6E4BF3BC787509 /* Comfortaa-Bold.ttf */,
+				4BB917917A4244E5BAEB76D0 /* Comfortaa-Light.ttf */,
+				75CBAFEC683F4804BDF4CD84 /* Comfortaa-Medium.ttf */,
+				797F2D3E054C4DDF834DBAD4 /* Comfortaa-Regular.ttf */,
+				81FFC1E5922C41A9ACD1B391 /* Comfortaa-SemiBold.ttf */,
+				DB682BAFD951456892CCCCD3 /* Courgette-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -388,6 +421,17 @@
 				A316823C3B16418AB906B000 /* Zocial.ttf in Resources */,
 				D343D2EE8E954829B435A9C6 /* SVN-Newton.ttf in Resources */,
 				39F0DFDA33E7435D8FACECC3 /* SVN-Redressed.ttf in Resources */,
+				61B11D7F43C04F07AF8603DE /* Baloo2-Bold.ttf in Resources */,
+				8F698F5905B64B0A93E3D943 /* Baloo2-ExtraBold.ttf in Resources */,
+				C0A72F4AC1254844B64426D2 /* Baloo2-Medium.ttf in Resources */,
+				F8CAA6A23AA34EEB85D56BEC /* Baloo2-Regular.ttf in Resources */,
+				5356EE3409E54857A03AD4CF /* Baloo2-SemiBold.ttf in Resources */,
+				AB494EB018AC4239A3BBD29E /* Comfortaa-Bold.ttf in Resources */,
+				F958265357BB4EB69946EC13 /* Comfortaa-Light.ttf in Resources */,
+				D4181BEEFA054D1D902FD101 /* Comfortaa-Medium.ttf in Resources */,
+				E623D9221B2F4193BD46194B /* Comfortaa-Regular.ttf in Resources */,
+				949BB7919D3B4472A5F528CB /* Comfortaa-SemiBold.ttf in Resources */,
+				929FD55B210E43BC81309E9D /* Courgette-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

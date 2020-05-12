@@ -25,13 +25,23 @@ import '@react-native-firebase/storage';
 
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import RNFetchBlob from 'react-native-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 
 const storage = firebase.storage();
-const Blob = RNFetchBlob.polyfill.Blob;
-const fs = RNFetchBlob.fs;
-window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
-window.Blob = Blob;
+
+const Fetch = RNFetchBlob.polyfill.Fetch;
+// replace built-in fetch
+window.fetch = new Fetch({
+  // enable this option so that the response data conversion handled automatically
+  auto: true,
+  // when receiving response data, the module will match its Content-Type header
+  // with strings in this array. If it contains any one of string in this array,
+  // the response body will be considered as binary data and the data will be stored
+  // in file system instead of in memory.
+  // By default, it only store response data to file system when Content-Type
+  // contains string `application/octet`.
+  binaryContentTypes: ['image/', 'video/', 'audio/', 'foo/'],
+}).build();
 const options = {
   title: 'Select Image',
   storageOptions: {
@@ -133,33 +143,54 @@ export class SettingsScreen extends Component {
   //     console.error(error);
   //   }
   // };
-  uploadImage(uri, mime = 'application/octet-stream') {
-    return new Promise((resolve, reject) => {
-      const uploadUri =
-        Platform.OS === 'ios' ? uri.replace('file://', '') : uri;
+  uploadImage(file) {
+    const Blob = RNFetchBlob.polyfill.Blob;
+    const fs = RNFetchBlob.fs;
+    window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest;
+    window.Blob = Blob;
+    let curUser = firebase.auth().currentUser;
+
+    if (curUser) {
+      let curUserId = curUser.uid;
+
       let uploadBlob = null;
+      const imageRef = firebase
+        .storage()
+        .ref()
+        .child('profile_images/' + curUserId + '.jpg');
+      let mime = 'image/jpg';
 
-      const imageRef = firebase.storage().ref('images').child('image_001');
-
-      fs.readFile(uploadUri, 'base64')
+      fs.readFile(file.uri, 'base64')
         .then((data) => {
+          console.log('File read');
           return Blob.build(data, {type: `${mime};BASE64`});
         })
         .then((blob) => {
+          console.log('uploading...');
           uploadBlob = blob;
-          return imageRef.put(blob, {contentType: mime});
-        })
-        .then(() => {
-          uploadBlob.close();
-          return imageRef.getDownloadURL();
-        })
-        .then((url) => {
-          resolve(url);
+          imageRef
+            .put(blob, {contentType: mime})
+            .then(() => {
+              uploadBlob.close();
+              console.log('Getting url...');
+              imageRef.getDownloadURL().then((url) => {
+                console.log(url);
+                firebase.firestore().collection('users').doc(curUserId).update({
+                  profile_image_url: url,
+                });
+                console.log('Image updated');
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
-          reject(error);
+          console.log(error);
         });
-    });
+    } else {
+      alert('Please login...!');
+    }
   }
 
   getImage() {

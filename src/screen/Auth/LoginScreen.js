@@ -55,7 +55,7 @@ class LoginScreen extends React.Component {
       this.setState({
         isLoading: !this.state.isLoading,
       });
-    }, 30000);
+    }, 300000);
   }
 
   _signInGG = async () => {
@@ -173,6 +173,7 @@ class LoginScreen extends React.Component {
             animationStyle={styles.lottie}
             speed={1}
           />
+          {/* <ActivityIndicator size="large" color="#9E9E9E" /> */}
         </View>
       );
     }
