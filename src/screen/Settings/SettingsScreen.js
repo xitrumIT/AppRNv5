@@ -26,7 +26,9 @@ import '@react-native-firebase/storage';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import RNFetchBlob from 'rn-fetch-blob';
+import uuid from 'uuid';
 
+console.disableYellowBox = true;
 const storage = firebase.storage();
 
 const Fetch = RNFetchBlob.polyfill.Fetch;
@@ -208,7 +210,7 @@ export class SettingsScreen extends Component {
         // this.setState({image_uri: response.uri})
 
         // You can also display the image using data:
-        // let image_uri = { uri: 'data:image/jpeg;base64,' + response.data };
+        let image_uri = {uri: 'data:image/jpeg;base64,' + response.data};
 
         this.uploadImage(response.uri)
           .then((url) => {

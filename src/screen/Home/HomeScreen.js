@@ -7,18 +7,38 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {CustomHeader} from '../Drawer/CustomHeader.js';
-import {RVText} from '../../components';
+import {SearchBar} from 'react-native-elements';
+
 import {BorderlessButton} from 'react-native-gesture-handler';
 
 console.disableYellowBox = true;
 export class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: '',
+    };
+  }
+  updateSearch = (search) => {
+    this.setState({search});
+  };
+
   render() {
+    const {search} = this.state;
     return (
       <SafeAreaView style={{flex: 1}}>
         <CustomHeader
           title="Home"
           isHome={true}
           navigation={this.props.navigation}
+        />
+        <SearchBar
+          placeholder="Search here...."
+          onChangeText={this.updateSearch}
+          value={search}
+          // inputContainerStyle={{backgroundColor: 'white'}}
+          cancelButtonTitle="Cancel"
+          searchIcon={{size: 24}}
         />
         <View
           style={{
